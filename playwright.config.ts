@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
@@ -5,7 +6,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'https://demoschool.web-school.co.in',
-    headless: false,
+    headless: !process.env.CI,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',
