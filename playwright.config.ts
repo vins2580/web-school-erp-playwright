@@ -6,7 +6,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'https://demoschool.web-school.co.in',
-    headless: !process.env.CI,
+    headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',

@@ -11,7 +11,7 @@ test('Open HR Payroll', async ({ page }) => {
 
 
   // Click HR/Payroll
-  await page.locator('a[href="/index.php/hr/payroll"]').click();
+  await page.getByText('HR/Payroll', { exact: true }).click();
 
   // Wait for 5 seconds
   await page.waitForTimeout(5000);
