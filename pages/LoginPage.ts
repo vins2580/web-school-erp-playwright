@@ -1,21 +1,26 @@
-import { test, expect } from '@playwright/test';
+import {  Page, Locator } from '@playwright/test'
 
-test('WebSchool Login Page', async ({ page }) => {
+export class LoginPage {
 
-  // Open WebSchool login page
-  await page.goto('https://demoschool.web-school.co.in/index.php/user/login');
+  readonly page: Page
+  readonly username: Locator
+  readonly password: Locator
+  readonly loginButton: Locator
+  
+  constructor(page: Page) {
+    this.page = page
+    this.username = page.locator('#UserLogin_username')
+    this.password = page.locator('#UserLogin_password')
+    this.loginButton = page.locator('input[type="submit"][value="Sign in "]')
+  }
 
-  // Enter username
-  await page.locator('#UserLogin_username').fill('admin');
+  async Login(username: string, passwword:string) {
+    await this.username.fill(username)
+    await this.password.fill(passwword) 
+    await this.loginButton.click()
 
-  // Enter password
-  await page.locator('#UserLogin_password').fill('webschool');
+  }
 
-  // Click Sign in
-  await page.locator('input[type="submit"][value="Sign in "]').click();
 
-  console.log('WebSchool Login completed successfully');
 
-  // Wait for 5 seconds
-  await page.waitForTimeout(5000);
-});
+}
