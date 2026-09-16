@@ -1,16 +1,19 @@
-import { Page, Locator } from '@playwright/test'
+import { Page, Locator } from '@playwright/test';
 
 export class HRPAYROLLPAGE {
 
-    readonly page: Page
-    readonly hrpayroll: Locator
+    readonly page: Page;
+    readonly hrpayroll: Locator;
 
-constructor(page: Page) {
-    this.page = page
-    this.hrpayroll = page.locator('a.has-ul').filter({ hasText: 'HR/Payroll'})
+    constructor(page: Page) {
+        this.page = page;
 
-}
-async clickHRPAYROLL() {
-    await this.hrpayroll.click()
-}
+        this.hrpayroll = this.page.locator('a.has-ul').filter({
+            hasText: 'HR/Payroll'
+        });
+    }
+
+    async clickHRPAYROLL() {
+        await this.hrpayroll.click();
+    }
 }
